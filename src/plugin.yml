@@ -5,3 +5,15 @@ commands:
   turret:
     description: Sets various properties of a placable turret.
     usage: /turret [speed|firerate|type|los|distance|save] [remaining args]
+permissions:
+  Turrets.*:
+    children:
+      description: Allows editing of turrets and turrets will ignore the placer.
+      Turrets.edit: true
+      Turrets.ignore: true
+  Turrets.edit:
+    description: Allows editing of turrets.
+    default: op
+  Turrets.ignore:
+    description: Turrets ignore players with this node.
+    default: false

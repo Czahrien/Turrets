@@ -18,6 +18,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.BlockIterator;
 
 /**
@@ -42,7 +43,7 @@ public class Turrets extends JavaPlugin implements Listener, Runnable {
     
     @EventHandler
     public void interact(PlayerInteractEvent e) {
-        if(e.getPlayer().isOp() && e.getPlayer().getItemInHand().getType() == Material.WOOD_HOE) {
+        if(e.getPlayer().hasPermission("Turrets.edit") && e.getPlayer().getItemInHand().getType() == Material.WOOD_HOE) {
             e.setCancelled(true);
             if(e.getAction() == Action.LEFT_CLICK_BLOCK) { 
                 Location l = e.getClickedBlock().getLocation();
@@ -98,6 +99,11 @@ public class Turrets extends JavaPlugin implements Listener, Runnable {
             
             double dist = i.distance;    
             for(Player p : t.getWorld().getPlayers()) {
+                // we do not want to fire at vanished players or players that
+                // are not supposed to be fired upon.
+                if(p.hasPotionEffect(PotionEffectType.INVISIBILITY) || p.hasPermission("Turrets.ignore")) {
+                    continue;
+                }
                 Location l = p.getLocation();
                 double d = l.distance(t);
                 if(d < dist) {
