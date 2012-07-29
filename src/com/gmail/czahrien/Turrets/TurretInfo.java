@@ -22,7 +22,7 @@ import org.bukkit.Location;
             speed = 1.0;
             firerate = 20;
             distance = 160;
-            los = false;
+            los = true;
             loc = null;
             elem = null;
         }
