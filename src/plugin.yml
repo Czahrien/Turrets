@@ -1,0 +1,7 @@
+name: Turrets
+version: 1.0
+main: com.gmail.czahrien.Turrets.Turrets
+commands:
+  turret:
+    description: Sets various properties of a placable turret.
+    usage: /turret [speed|firerate|type|los|distance|save] [remaining args]
