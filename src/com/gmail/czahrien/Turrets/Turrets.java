@@ -137,7 +137,7 @@ public class Turrets extends JavaPlugin implements Listener, Runnable {
     
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(sender instanceof Player && sender.isOp()) {
+        if(sender instanceof Player) {
             TurretInfo i = myStorage.info.get(sender.getName());
             if(label.equalsIgnoreCase("turret") && args.length >= 1) {
                 label = args[0];
@@ -224,7 +224,6 @@ public class Turrets extends JavaPlugin implements Listener, Runnable {
                 }
                 return true;
             }
-
         }
         return false;
     }   
