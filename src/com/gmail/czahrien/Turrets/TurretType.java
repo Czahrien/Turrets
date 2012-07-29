@@ -166,4 +166,4 @@ import org.bukkit.util.Vector;
             e.printStackTrace();
         }
     }
-    }
+}
